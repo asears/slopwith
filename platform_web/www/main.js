@@ -94,10 +94,14 @@ function buildTableIndex(manifest) {
   const index = {};
   if (!manifest || !manifest.entries) return index;
   for (const entry of manifest.entries) {
-    if (entry.asset_type !== 'table') continue;
-    const m = entry.name.match(/table_(\d+)/i);
-    if (!m) continue;
-    const id = parseInt(m[1], 10);
+    const entryType = entry.asset_type || entry.type;
+    if (entryType !== 'table') continue;
+    let id = Number(entry.id);
+    if (!Number.isFinite(id)) {
+      const m = String(entry.name || '').match(/table_(\d+)/i);
+      if (!m) continue;
+      id = parseInt(m[1], 10);
+    }
     index[id] = { byte_offset: entry.byte_offset, byte_length: entry.byte_length };
   }
   return index;
@@ -269,7 +273,7 @@ async function main() {
     // wasm-bindgen generated glue (available after `wasm-pack build`)
     const mod = await import(WASM_JS_GLUE);
     await mod.default();          // initialises the WASM module
-    wasm = mod;
+    wasm = mod.glueExports;
   } catch (_) {
     // Manual instantiation (no wasm-bindgen glue yet — build first)
     status.textContent = 'engine_core.js not found — run: cargo build --target wasm32-unknown-unknown';
@@ -283,7 +287,7 @@ async function main() {
   if (packBytes.length > 0) {
     // Write pack bytes into WASM linear memory, then commit.
     const ptr = wasm.alloc_buf(packBytes.length);
-    new Uint8Array(wasm.get_memory().buffer).set(packBytes, ptr);
+    new Uint8Array(wasm.memory.buffer).set(packBytes, ptr);
     wasm.commit_pack(packBytes.length);
     status.textContent = `Asset pack loaded (${packBytes.length} bytes)`;
   } else {

@@ -18,29 +18,27 @@ export default async function init() {
   wasm           = result.instance.exports;
 
   // Expose every WASM export as a named export on this module.
+  // (Browsers do not support live re-exports from WASM, so we copy them.)
   Object.assign(glueExports, wasm);
 }
 
 // Proxy object that main.js receives when it does:
 //   const mod = await import('./engine_core.js')
+// Usage:  mod.tick(flags)  →  forwards to wasm.tick(flags)
 export const glueExports = {};
 
-// Forward individual exports
-export const init_engine    = (...a) => wasm.init(...a);
-export const alloc_buf      = (...a) => wasm.alloc_buf(...a);
-export const commit_pack    = (...a) => wasm.commit_pack(...a);
-export const register_table = (...a) => wasm.register_table(...a);
-export const tick           = (...a) => wasm.tick(...a);
-export const plane_x        = ()     => wasm.plane_x();
-export const plane_y        = ()     => wasm.plane_y();
-export const plane_angle    = ()     => wasm.plane_angle();
-export const scroll_x       = ()     => wasm.scroll_x();
-export const frame_count    = ()     => wasm.frame_count();
-export const terrain_y_at   = (...a) => wasm.terrain_y_at(...a);
-export const trig_y_at      = (...a) => wasm.trig_y_at(...a);
-
-// Expose raw WASM memory so JS can write byte slices before calling commit_pack
-export const get_memory = () => wasm.memory;
+// Forward individual exports so tree-shaking and direct destructuring work.
+export const init_engine     = (...a) => wasm.init(...a);
+export const load_asset_pack = (...a) => wasm.load_asset_pack(...a);
+export const register_table  = (...a) => wasm.register_table(...a);
+export const tick            = (...a) => wasm.tick(...a);
+export const plane_x         = ()     => wasm.plane_x();
+export const plane_y         = ()     => wasm.plane_y();
+export const plane_angle     = ()     => wasm.plane_angle();
+export const scroll_x        = ()     => wasm.scroll_x();
+export const frame_count     = ()     => wasm.frame_count();
+export const terrain_y_at    = (...a) => wasm.terrain_y_at(...a);
+export const trig_y_at       = (...a) => wasm.trig_y_at(...a);
 
 // Allow main.js to call `wasm.init()` matching the wasm-bindgen pattern
 export { init_engine as init };

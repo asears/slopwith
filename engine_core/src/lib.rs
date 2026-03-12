@@ -591,4 +591,6 @@ pub extern "C" fn projectile_y(index: u32) -> f32 {
 }
 
 #[no_mangle]
-pub extern "C" fn projectile_kind(index: u32) -> u32 {
+pub extern "C" fn projectile_kind(index: u32) -> u32 {
+    engine().nth_alive_projectile(index as usize).map(|p| p.kind as u32).unwrap_or(0)
+}
