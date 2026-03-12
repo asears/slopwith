@@ -130,6 +130,15 @@ impl Engine {
         x.rem_euclid(p)
     }
 
+    fn world_to_screen_x(&self, world_x: f32) -> f32 {
+        let p = self.world_period();
+        let mut screen_x = (world_x - self.scroll_x as f32).rem_euclid(p);
+        if screen_x > p * 0.5 {
+            screen_x -= p;
+        }
+        screen_x
+    }
+
     fn signed_lookup(&self, index: usize) -> f32 {
         if self.trig_y.is_empty() {
             return 0.0;
@@ -160,20 +169,21 @@ impl Engine {
         if !self.targets.is_empty() {
             return;
         }
-        let spacing = 46.0;
-        let count = 42;
+        let period = self.world_period().max(320.0);
+        let count = ((period / 72.0).round() as usize).clamp(12, 20);
+        let spacing = period / count as f32;
         for i in 0..count {
-            let wx = i as f32 * spacing + 30.0;
+            let wx = i as f32 * spacing + spacing * 0.5;
             let ground = self.terrain_y_world(wx);
-            let kind = match i % 7 {
-                0 | 1 | 2 => 0,
-                3 | 4 => 1,
+            let kind = match i % 10 {
+                0 => 0,
+                5 => 1,
                 _ => 2,
             };
             let y = match kind {
-                0 => ground - 4.0,
-                1 => ground - 6.0,
-                _ => ground - 10.0,
+                0 => ground - 2.0,
+                1 => ground - 2.0,
+                _ => ground - 8.0,
             };
             self.targets.push(Target {
                 world_x: self.world_x_wrap(wx),
@@ -186,13 +196,15 @@ impl Engine {
 
     fn spawn_bullet(&mut self) {
         let heading = self.angle as usize;
-        let vx = self.signed_lookup((heading + 128) & 0x1FF) * 3.0;
-        let vy = self.signed_lookup(heading & 0x1FF) * 2.6;
+        let fwd_x = self.signed_lookup((heading + 128) & 0x1FF);
+        let fwd_y = self.signed_lookup(heading & 0x1FF);
+        let plane_vx = fwd_x * self.speed;
+        let plane_vy = fwd_y * self.speed;
         self.projectiles.push(Projectile {
-            x: self.plane_x,
-            y: self.plane_y,
-            vx,
-            vy,
+            x: self.world_x_wrap(self.plane_x + fwd_x * 7.0),
+            y: self.plane_y + fwd_y * 7.0,
+            vx: plane_vx + fwd_x * 3.2,
+            vy: plane_vy + fwd_y * 2.8,
             kind: 0,
             age: 0,
             alive: true,
@@ -200,11 +212,16 @@ impl Engine {
     }
 
     fn spawn_bomb(&mut self) {
+        let heading = self.angle as usize;
+        let fwd_x = self.signed_lookup((heading + 128) & 0x1FF);
+        let fwd_y = self.signed_lookup(heading & 0x1FF);
+        let plane_vx = fwd_x * self.speed;
+        let plane_vy = fwd_y * self.speed;
         self.projectiles.push(Projectile {
-            x: self.plane_x - 1.0,
-            y: self.plane_y + 3.0,
-            vx: self.speed * 0.35,
-            vy: 0.8,
+            x: self.world_x_wrap(self.plane_x + fwd_x * 2.0),
+            y: self.plane_y + 3.5 + fwd_y * 2.0,
+            vx: plane_vx * 0.9,
+            vy: plane_vy * 0.4 + 1.0,
             kind: 1,
             age: 0,
             alive: true,
@@ -335,7 +352,7 @@ impl Engine {
         let y_delta = self.signed_lookup(angle_ix) * self.speed;
         let x_delta = self.signed_lookup((angle_ix + 128) & 0x1FF) * self.speed;
 
-        self.plane_x = self.world_x_wrap(self.plane_x + x_delta.max(0.5));
+        self.plane_x = self.world_x_wrap(self.plane_x + x_delta);
         self.plane_y += y_delta;
 
         if input_flags & 0b0100 != 0 {
@@ -354,9 +371,23 @@ impl Engine {
         if self.plane_y < 12.0  { self.plane_y = 12.0; }
         if self.plane_y > 198.0 { self.plane_y = 198.0; }
 
-        // --- Scroll ----------------------------------------------------------
-        let scroll_follow = self.plane_x - 100.0;
-        self.scroll_x = self.world_x_wrap(scroll_follow) as u32;
+        // --- Scroll (dead-zone camera) --------------------------------------
+        let mut scroll = self.scroll_x as f32;
+        let plane_screen_x = self.world_to_screen_x(self.plane_x);
+        if plane_screen_x > 240.0 {
+            scroll += plane_screen_x - 240.0;
+        } else if plane_screen_x < 80.0 {
+            scroll += plane_screen_x - 80.0;
+        }
+        self.scroll_x = self.world_x_wrap(scroll) as u32;
+
+        // Wrap the aircraft at screen edges so it immediately re-enters.
+        let wrapped_screen_x = self.world_to_screen_x(self.plane_x);
+        if wrapped_screen_x < -8.0 {
+            self.plane_x = self.world_x_wrap(self.plane_x + 320.0);
+        } else if wrapped_screen_x > 328.0 {
+            self.plane_x = self.world_x_wrap(self.plane_x - 320.0);
+        }
 
         if self.fire_cooldown > 0 {
             self.fire_cooldown -= 1;
@@ -508,6 +539,13 @@ pub extern "C" fn plane_y() -> f32 { engine().plane_y }
 #[no_mangle]
 pub extern "C" fn plane_angle() -> u32 { engine().angle as u32 }
 
+/// Current plane X position projected into screen space.
+#[no_mangle]
+pub extern "C" fn plane_screen_x() -> f32 {
+    let e = engine();
+    e.world_to_screen_x(e.plane_x)
+}
+
 /// Current score.
 #[no_mangle]
 pub extern "C" fn score() -> u32 { engine().score }
@@ -551,8 +589,7 @@ pub extern "C" fn target_count() -> u32 {
 pub extern "C" fn target_x(index: u32) -> f32 {
     let e = engine();
     if let Some(target) = e.nth_alive_target(index as usize) {
-        let world = e.world_x_wrap(target.world_x - e.scroll_x as f32);
-        if world < 320.0 { world } else { world - e.world_period().min(320.0) }
+        e.world_to_screen_x(target.world_x)
     } else {
         -1000.0
     }
@@ -578,8 +615,7 @@ pub extern "C" fn projectile_count() -> u32 {
 pub extern "C" fn projectile_x(index: u32) -> f32 {
     let e = engine();
     if let Some(projectile) = e.nth_alive_projectile(index as usize) {
-        let world = e.world_x_wrap(projectile.x - e.scroll_x as f32);
-        if world < 320.0 { world } else { world - e.world_period().min(320.0) }
+        e.world_to_screen_x(projectile.x)
     } else {
         -1000.0
     }

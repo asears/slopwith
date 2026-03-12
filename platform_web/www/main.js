@@ -203,7 +203,7 @@ function render(wasm) {
   }
 
   // Plane (simple triangle representing fuselage)
-  const px = wasm.plane_x();
+  const px = typeof wasm.plane_screen_x === 'function' ? wasm.plane_screen_x() : wasm.plane_x();
   const py = wasm.plane_y();
   const angle = wasm.plane_angle();
 
