@@ -1,0 +1,213 @@
+{
+  "next_step_recommendation": [
+    "Verify sprite blocks against runtime blit callsites",
+    "Type remaining high-entropy runs for packed music/event streams",
+    "Map table usage via xref from code_candidate disassembly"
+  ],
+  "runs": [
+    {
+      "entropy_bits_per_byte": 0.5031837224960327,
+      "global_offset": 39768,
+      "hint": "low-entropy pattern",
+      "length": 40,
+      "printable_ratio": 0.05000000074505806,
+      "segment_offset": 3928
+    },
+    {
+      "entropy_bits_per_byte": 4.069581508636475,
+      "global_offset": 41832,
+      "hint": "mixed/unknown",
+      "length": 60,
+      "printable_ratio": 0.4833333194255829,
+      "segment_offset": 5992
+    },
+    {
+      "entropy_bits_per_byte": 3.049691915512085,
+      "global_offset": 42528,
+      "hint": "mixed/unknown",
+      "length": 34,
+      "printable_ratio": 0.11764705926179886,
+      "segment_offset": 6688
+    },
+    {
+      "entropy_bits_per_byte": 0.0868905559182167,
+      "global_offset": 43771,
+      "hint": "text-like",
+      "length": 183,
+      "printable_ratio": 1.0,
+      "segment_offset": 7931
+    },
+    {
+      "entropy_bits_per_byte": 0.5974547266960144,
+      "global_offset": 45608,
+      "hint": "low-entropy pattern",
+      "length": 32,
+      "printable_ratio": 0.03125,
+      "segment_offset": 9768
+    },
+    {
+      "entropy_bits_per_byte": 0.8630636930465698,
+      "global_offset": 45672,
+      "hint": "low-entropy pattern",
+      "length": 32,
+      "printable_ratio": 0.0625,
+      "segment_offset": 9832
+    },
+    {
+      "entropy_bits_per_byte": 3.181204319000244,
+      "global_offset": 46008,
+      "hint": "mixed/unknown",
+      "length": 46,
+      "printable_ratio": 0.21739129722118378,
+      "segment_offset": 10168
+    },
+    {
+      "entropy_bits_per_byte": 0.249882310628891,
+      "global_offset": 46192,
+      "hint": "low-entropy pattern",
+      "length": 24,
+      "printable_ratio": 0.0,
+      "segment_offset": 10352
+    },
+    {
+      "entropy_bits_per_byte": 2.0357413291931152,
+      "global_offset": 46576,
+      "hint": "low-entropy pattern",
+      "length": 88,
+      "printable_ratio": 0.10227272659540176,
+      "segment_offset": 10736
+    },
+    {
+      "entropy_bits_per_byte": 1.1386865377426147,
+      "global_offset": 46704,
+      "hint": "low-entropy pattern",
+      "length": 24,
+      "printable_ratio": 0.125,
+      "segment_offset": 10864
+    },
+    {
+      "entropy_bits_per_byte": 0.49715015292167664,
+      "global_offset": 47024,
+      "hint": "low-entropy pattern",
+      "length": 24,
+      "printable_ratio": 0.0,
+      "segment_offset": 11184
+    },
+    {
+      "entropy_bits_per_byte": 2.2437210083007812,
+      "global_offset": 47080,
+      "hint": "low-entropy pattern",
+      "length": 58,
+      "printable_ratio": 0.2586206793785095,
+      "segment_offset": 11240
+    },
+    {
+      "entropy_bits_per_byte": 3.1762688159942627,
+      "global_offset": 47184,
+      "hint": "mixed/unknown",
+      "length": 48,
+      "printable_ratio": 0.2083333283662796,
+      "segment_offset": 11344
+    },
+    {
+      "entropy_bits_per_byte": 1.1844873428344727,
+      "global_offset": 47536,
+      "hint": "low-entropy pattern",
+      "length": 32,
+      "printable_ratio": 0.0625,
+      "segment_offset": 11696
+    },
+    {
+      "entropy_bits_per_byte": 1.746640682220459,
+      "global_offset": 47600,
+      "hint": "low-entropy pattern",
+      "length": 32,
+      "printable_ratio": 0.0,
+      "segment_offset": 11760
+    },
+    {
+      "entropy_bits_per_byte": 0.8596409559249878,
+      "global_offset": 47736,
+      "hint": "low-entropy pattern",
+      "length": 38,
+      "printable_ratio": 0.07894736528396606,
+      "segment_offset": 11896
+    },
+    {
+      "entropy_bits_per_byte": 1.3659154176712036,
+      "global_offset": 47893,
+      "hint": "low-entropy pattern",
+      "length": 51,
+      "printable_ratio": 0.09803921729326248,
+      "segment_offset": 12053
+    },
+    {
+      "entropy_bits_per_byte": 2.951493978500366,
+      "global_offset": 47976,
+      "hint": "low-entropy pattern",
+      "length": 48,
+      "printable_ratio": 0.1458333283662796,
+      "segment_offset": 12136
+    },
+    {
+      "entropy_bits_per_byte": 1.4422404766082764,
+      "global_offset": 48080,
+      "hint": "low-entropy pattern",
+      "length": 32,
+      "printable_ratio": 0.0,
+      "segment_offset": 12240
+    },
+    {
+      "entropy_bits_per_byte": 0.249882310628891,
+      "global_offset": 48432,
+      "hint": "low-entropy pattern",
+      "length": 24,
+      "printable_ratio": 0.0,
+      "segment_offset": 12592
+    },
+    {
+      "entropy_bits_per_byte": 0.4363502264022827,
+      "global_offset": 48496,
+      "hint": "low-entropy pattern",
+      "length": 48,
+      "printable_ratio": 0.02083333395421505,
+      "segment_offset": 12656
+    },
+    {
+      "entropy_bits_per_byte": 2.375814437866211,
+      "global_offset": 48656,
+      "hint": "low-entropy pattern",
+      "length": 24,
+      "printable_ratio": 0.2083333283662796,
+      "segment_offset": 12816
+    },
+    {
+      "entropy_bits_per_byte": 0.0,
+      "global_offset": 48888,
+      "hint": "low-entropy pattern",
+      "length": 40,
+      "printable_ratio": 0.0,
+      "segment_offset": 13048
+    },
+    {
+      "entropy_bits_per_byte": 1.4904119968414307,
+      "global_offset": 49128,
+      "hint": "low-entropy pattern",
+      "length": 46,
+      "printable_ratio": 0.239130437374115,
+      "segment_offset": 13288
+    },
+    {
+      "entropy_bits_per_byte": 0.4866400957107544,
+      "global_offset": 49344,
+      "hint": "low-entropy pattern",
+      "length": 74,
+      "printable_ratio": 0.013513513840734959,
+      "segment_offset": 13504
+    }
+  ],
+  "summary": {
+    "run_count": 25,
+    "total_remaining_bytes": 1182
+  }
+}

@@ -1,0 +1,130 @@
+0x0000003A	Insufficient memory
+0x00000157	]_^ZY[X
+0x0000046A	^_Z[X]
+0x000004A9	PSQRVWU
+0x000004BA	iQ]_^ZY[X
+0x000004E4	PSQRVW
+0x00000521	_^ZY[X]
+0x000006B3	SQRUWV
+0x000006C9	G@#G>t%
+0x000006D7	GB;GNu
+0x00000780	^_]ZY[
+0x0000088B	_^]ZY[
+0x0000090F	_^]ZY[
+0x00000B23	0333<???<???<???0333<???<???<???0333<???<???<???
+0x00001D09	E*;D*tW
+0x00002597	u%_&D&-&
+0x00003C97	=t=_=_=J=
+0x0000523E	R~R'Q}P0P#P
+0x0000578D	XmXUX#X
+0x00005930	PSQRVWU
+0x0000595E	]_^ZY[X
+0x00006DC2	:,XZRP
+0x00006E95	g+XZRP
+0x00006F95	g*XZRP
+0x0000846A	$^ZY[]
+0x00008747	FfJEBf
+0x000087C4	_^ZY[]
+0x00008861	WVRQSP
+0x00008872	X[YZ^_
+0x000095CB	_^ZY[X
+0x000095D8	WVRQSP
+0x000099D9	_^ZY[X
+0x000099E5	WVRQSP
+0x00009B80	Too many arguments
+0x00009B97	b4/d8/d2/r16/c8/b8/a8/b4./c4./c+4./d4./
+0x00009BBF	e4/g8/g2/r16/>a8/<g8/e8/d2./
+0x00009BDC	b4/d8/d2/r16/c8/b8/a8/b4./c4./c+4./d4./
+0x00009C04	e4/>a8/a2/r16/<g8/f+8/e8/d2./
+0x00009C22	d8/g2/r16/g8/g+2/r16/g+8/>a2/r16/a8/c2/r16/
+0x00009C4E	b8/a8/<g8/>b4/<g8/>b4/<g8/>a4./<g1/
+0x00009C74	              
+0x00009C83	f*n*r&t#w&y#d*q&e&g#s&c&m&a&j&k&i&h*v*p#
+0x00009CAE	Only one mode: -s -c -m -a  may be specified
+0x00009CDF	Only one of -j and -k may be specified
+0x00009D08	Key: 1 - Joystick with IBM Keyboard
+0x00009D2E	     2 - Joystick with non-IBM Keyboard
+0x00009D58	     3 - IBM Keyboard only
+0x00009D75	     4 - Non-IBM keyboard only
+0x00009D96	Key: S - single player
+0x00009DAF	     C - single player against computer
+0x00009DD9	     M - multiple players on network
+0x00009E00	     A - 2 players on asynchronous line
+0x00009E28	         Key a game number
+0x00009E45	S O P W I T H
+0x00009E58	Compuscience
+0x00009E6E	THE END
+0x00009E78	End of game statictics
+0x00009E93	Objects used: 
+0x00009EA5	c:sopwith?.dta
+0x00009EB4	c:semaphor
+0x00009EC6	Improper device specification
+0x00009EE4	File not found
+0x00009EF3	Read error on communications file during close
+0x00009F22	Communications file locked during close
+0x00009F4A	Bad player counter
+0x00009F5D	Write error on communications file
+0x00009F80	Unlock error on communications file
+0x00009FA4	Read error during wait
+0x00009FBB	Bad player count
+0x00009FCC	Write error during play
+0x00009FE4	Bad Player count
+0x00009FF5	Read error during play
+0x0000A00C	Bad player count
+0x0000A022	 i/o errors recorded
+0x0000A03B	last 50:
+0x0000A048	READ      
+0x0000A053	WRITE     
+0x0000A05E	READPLAY  
+0x0000A069	WRITEPLAY 
+0x0000A079	Number of moves:        
+0x0000A094	Number of read tries:   
+0x0000A0AF	Minimum tries/move:     
+0x0000A0CA	Maximum tries/move:     
+0x0000A0E5	Number of tick delays:  
+0x0000A100	# of tick adjusts up:   
+0x0000A11B	# of tick adjusts down: 
+0x0000A139	Bad player count
+0x0000A14C	Player: 
+0x0000A155	  <- last update 
+0x0000A167	Read error on communications file 
+0x0000A18A	Communications file locked 
+0x0000A1A6	Mamimum number of players already playing
+0x0000A1D0	Write error on communications file
+0x0000A1F3	Unlock error on communications file
+0x0000A217	      Waiting for other player(s)
+0x0000A239	 Key maximum number of players allowed
+0x0000A260	Time out on sychronization
+0x0000A27B	Timeout during play
+0x0000A28F	        Waiting for other player
+0x0000A2B0	Timeout during player assignment
+0x0000A2D1	Unable to assign players, try again
+0x0000A2F7	Usage: sopwith [
+0x0000A30E	Unknown format 
+0x0000A373	-,35490#
+0x0000A391	xz,/. bhs XZ<?> BHS 
+0x0000A742	~}|{zyxwvutsrqponmlkjihgfedcba`_^]\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:9876543210/.-,+*)('&%$#"! 
+0x0000A7D5	          
+0x0000A823	  !"##$%&&''(())**+,,-./01234678:;<=>?@ABCDEFGIJKKKKKKKKKKKKKKKKKKKKKJJJJIIHHGGFEEDCB@?><:975320.,+)'%$" 
+0x0000A8D9	 !"#$$%&'()**+,,--..//01234567889:;;<=>>??@AABBCDEEFGHHIJKKKKKKKKKKKKKJJJJJJKKJJJJIIIIHHGGGGFFEEDDCCBBBBAAAA@@??>>==<<;;;:::::::::;;;;<<====>>>>????>>>>====>>>>??????>>>>==<<;;::998776554433221100//..--,,++******))))))))))))***++,,--.//0122345567889:;;<=>>?@@AABCDEFGHIJKKKKKKKKKKKKKKKKKKKKKJJIIIHHHHHHHGGGGFFEEDDCCBBAA@@?>=<;:98654310/.-,,,,,++++*****))))))(((('''''&&&&&%%%%%$$$$$####""""!!!!    
+0x0000AAB4	   !!"""##$$%%&&''(())**+++,,--...///00111222334455566778899::;;<<<==>>??@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@??>>====<<<<<<;;;;;;;;:::::999988888877777766666655555544444444333333332222222222222233333334444555566667788899::;;;<<<===>>>???@@@@AAAABBBBCCCCCDDDDDDDEEEEEEEEFFFFGGGGHHHHIIIIJJJJKKKJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKJIHGFEDCBA@?>=<;:987666655555555444433332222211111110000000000////////.............//............-------,,,,,,,++++++******)))))((('''&&&&%%%$$###"""!!  
+0x0000AE2E	  !!"""##$$%%&'(()*++,-./01234567899::;;<<<<<<<<<<<<<<<<<<<<<;;;;::::999988887777666667789::;<==>?@ABCDEFGHIJKKKKKKKKJJJJIIIIHHHGGFFEDCCBA@?>=<;:98654310/.,+)(&%#" 
+0x0000AEF0	                    
+0x0000AF30	   !!!!""""##$$%%&''())**+++,,,--../////00112233445567899:;;;;;;;;;;;;;;::9988776655443332221100//..-,+*)('&%$#"""!!!  
+0x0000B080	 !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+0x0000B415	UPVeUTVeV
+0x0000B856	P(!UP"eU
+0x0000B9D2	@jU`PU
+0x0000BBF5	QTUUUUQT
+0x0000BC8D	UUUUUUUUZ
+0x0000BC99	YUUeYUUeYUUeYUUeYUUeYUUe
+0x0000BCC9	UUUZVfUZUUUZVffZUUUZVffZUUUZVffZUUUZUUUZ
+0x0000BD59	UUUUUUUUj
+0x0000BF61	Unable to open history input file
+0x0000BF83	Insufficient memory to load history file
+0x0000BFAC	Unable to open history output file
+0x0000BFCF	Memory allocation error
+0x0000C011	SERIAL
+0x0000C03C	Error opening NAMEDEV dictionary device
+0x0000C064	Error reading NAMEDEV dictionary device
+0x0000C08C	Error accessing SERIAL communications device

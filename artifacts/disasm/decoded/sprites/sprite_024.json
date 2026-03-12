@@ -1,0 +1,16 @@
+{
+  "global_offset": 46984,
+  "id": 24,
+  "length": 40,
+  "segment_offset": 11144,
+  "sheet": {
+    "format": "1bpp",
+    "height_tiles": 1,
+    "tile_size": [
+      8,
+      8
+    ],
+    "width_tiles": 5
+  },
+  "tile_count": 5
+}

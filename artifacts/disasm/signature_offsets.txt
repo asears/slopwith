@@ -1,0 +1,7 @@
+MZ: none
+PE\0\0: none
+NE: none
+SOPWITH: 0x9E45
+Usage: sopwith: 0xA2F7
+Too many arguments: 0x9B80
+Compuscience: 0x9E58

@@ -1,0 +1,33 @@
+{
+  "artifacts": {
+    "asm_db": "transpile/sopwith_image.asm",
+    "decoded_index": "decoded/index.json",
+    "remaining_items": "decoded/remaining_items.json",
+    "segments": [
+      "segments/code_candidate.bin",
+      "segments/assets_candidate.bin"
+    ],
+    "segments_human_readable": [
+      "segments/code_candidate.hex.txt",
+      "segments/assets_candidate.hex.txt",
+      "segments/code_candidate.strings.txt",
+      "segments/assets_candidate.strings.txt"
+    ],
+    "signatures": "signature_offsets.txt",
+    "strings": "strings_min6.txt"
+  },
+  "assets_candidate_size": 13696,
+  "code_candidate_size": 35840,
+  "code_data_split_offset": 35840,
+  "mz_at_start": false,
+  "second_pass": {
+    "palette_count": 11,
+    "remaining_runs": 25,
+    "sprite_count": 44,
+    "table_count": 12
+  },
+  "sha256": "558894b0fffdd6829086561d204430ccf78341206d76158987efa00b100ed839",
+  "size": 49536,
+  "source": "C:\\projects\\sopwith\\Sopwith.exe",
+  "string_count_min6": 130
+}
