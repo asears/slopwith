@@ -1,7 +1,10 @@
 {
+  "avg_set_bits": 26.169811248779297,
+  "confidence": 0.7691528797149658,
   "global_offset": 40064,
   "id": 4,
   "length": 424,
+  "row_transition_ratio": 0.9380053877830505,
   "segment_offset": 4224,
   "sheet": {
     "format": "1bpp",

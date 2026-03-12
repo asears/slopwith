@@ -1,27 +1,13 @@
 # Remaining Items (Third Pass)
 
-- 1: global=0x00009B58 segment=0x00000F58 len=40 entropy=0.503 printable=0.05 hint=low-entropy pattern
-- 2: global=0x0000A368 segment=0x00001768 len=60 entropy=4.070 printable=0.48 hint=mixed/unknown
-- 3: global=0x0000A620 segment=0x00001A20 len=34 entropy=3.050 printable=0.12 hint=mixed/unknown
-- 4: global=0x0000AAFB segment=0x00001EFB len=183 entropy=0.087 printable=1.00 hint=text-like
-- 5: global=0x0000B228 segment=0x00002628 len=32 entropy=0.597 printable=0.03 hint=low-entropy pattern
-- 6: global=0x0000B268 segment=0x00002668 len=32 entropy=0.863 printable=0.06 hint=low-entropy pattern
-- 7: global=0x0000B3B8 segment=0x000027B8 len=46 entropy=3.181 printable=0.22 hint=mixed/unknown
-- 8: global=0x0000B470 segment=0x00002870 len=24 entropy=0.250 printable=0.00 hint=low-entropy pattern
-- 9: global=0x0000B5F0 segment=0x000029F0 len=88 entropy=2.036 printable=0.10 hint=low-entropy pattern
-- 10: global=0x0000B670 segment=0x00002A70 len=24 entropy=1.139 printable=0.12 hint=low-entropy pattern
-- 11: global=0x0000B7B0 segment=0x00002BB0 len=24 entropy=0.497 printable=0.00 hint=low-entropy pattern
-- 12: global=0x0000B7E8 segment=0x00002BE8 len=58 entropy=2.244 printable=0.26 hint=low-entropy pattern
-- 13: global=0x0000B850 segment=0x00002C50 len=48 entropy=3.176 printable=0.21 hint=mixed/unknown
-- 14: global=0x0000B9B0 segment=0x00002DB0 len=32 entropy=1.184 printable=0.06 hint=low-entropy pattern
-- 15: global=0x0000B9F0 segment=0x00002DF0 len=32 entropy=1.747 printable=0.00 hint=low-entropy pattern
-- 16: global=0x0000BA78 segment=0x00002E78 len=38 entropy=0.860 printable=0.08 hint=low-entropy pattern
-- 17: global=0x0000BB15 segment=0x00002F15 len=51 entropy=1.366 printable=0.10 hint=low-entropy pattern
-- 18: global=0x0000BB68 segment=0x00002F68 len=48 entropy=2.951 printable=0.15 hint=low-entropy pattern
-- 19: global=0x0000BBD0 segment=0x00002FD0 len=32 entropy=1.442 printable=0.00 hint=low-entropy pattern
-- 20: global=0x0000BD30 segment=0x00003130 len=24 entropy=0.250 printable=0.00 hint=low-entropy pattern
-- 21: global=0x0000BD70 segment=0x00003170 len=48 entropy=0.436 printable=0.02 hint=low-entropy pattern
-- 22: global=0x0000BE10 segment=0x00003210 len=24 entropy=2.376 printable=0.21 hint=low-entropy pattern
-- 23: global=0x0000BEF8 segment=0x000032F8 len=40 entropy=0.000 printable=0.00 hint=low-entropy pattern
-- 24: global=0x0000BFE8 segment=0x000033E8 len=46 entropy=1.490 printable=0.24 hint=low-entropy pattern
-- 25: global=0x0000C0C0 segment=0x000034C0 len=74 entropy=0.487 printable=0.01 hint=low-entropy pattern
+- 1: global=0x00009B50 segment=0x00000F50 len=48 entropy=0.724 printable=0.04 hint=low-entropy pattern
+- 2: global=0x0000A330 segment=0x00001730 len=464 entropy=1.541 printable=0.08 hint=low-entropy pattern
+- 3: global=0x0000A5B8 segment=0x000019B8 len=320 entropy=2.350 printable=0.03 hint=low-entropy pattern
+- 4: global=0x0000A7B1 segment=0x00001BB1 len=102 entropy=2.145 printable=0.10 hint=low-entropy pattern
+- 5: global=0x0000A847 segment=0x00001C47 len=50 entropy=3.042 printable=1.00 hint=text-like
+- 6: global=0x0000A8A9 segment=0x00001CA9 len=42 entropy=0.613 printable=0.00 hint=low-entropy pattern
+- 7: global=0x0000B128 segment=0x00002528 len=2912 entropy=3.611 printable=0.19 hint=mixed/unknown
+- 8: global=0x0000BCF0 segment=0x000030F0 len=176 entropy=2.583 printable=0.25 hint=low-entropy pattern
+- 9: global=0x0000BE10 segment=0x00003210 len=336 entropy=3.202 printable=0.10 hint=mixed/unknown
+- 10: global=0x0000BFE8 segment=0x000033E8 len=80 entropy=1.490 printable=0.17 hint=low-entropy pattern
+- 11: global=0x0000C0C0 segment=0x000034C0 len=192 entropy=1.106 printable=0.01 hint=low-entropy pattern

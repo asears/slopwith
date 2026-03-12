@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sopwith — WASM Preview</title>
+  <style>
+    body {
+      background: #111;
+      color: #ddd;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+    }
+    h1 { font-size: 1.1rem; margin: 0 0 8px; color: #9cf; }
+    canvas {
+      border: 1px solid #555;
+      image-rendering: pixelated;
+      /* Scale the 320×200 canvas up 3× for readability */
+      width:  960px;
+      height: 600px;
+    }
+    #hud {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #8b8;
+    }
+    #controls {
+      margin-top: 6px;
+      font-size: 0.72rem;
+      color: #888;
+    }
+    #status {
+      margin-top: 4px;
+      font-size: 0.7rem;
+      color: #fa8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sopwith — WebAssembly preview (asset-pack v1)</h1>
+  <canvas id="c" width="320" height="200"></canvas>
+  <div id="hud">Loading…</div>
+  <div id="controls">
+    ← / A — turn left &nbsp;|&nbsp; → / D — turn right &nbsp;|&nbsp;
+    ↑ / W — climb / throttle &nbsp;|&nbsp; ↓ / S — dive &nbsp;|&nbsp;
+    Space / Z — fire pellet &nbsp;|&nbsp; B — bomb &nbsp;|&nbsp; X — barrel roll
+  </div>
+  <div id="status" id="status"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

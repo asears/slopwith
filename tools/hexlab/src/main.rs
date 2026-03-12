@@ -24,7 +24,7 @@ struct ByteRange {
     end: usize,
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct PaletteCandidate {
     id: usize,
     segment_offset: usize,
@@ -37,7 +37,7 @@ struct PaletteCandidate {
     raw: Vec<u8>,
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct SpriteCandidate {
     id: usize,
     segment_offset: usize,
@@ -53,7 +53,7 @@ struct SpriteCandidate {
     tiles: Vec<[u8; 8]>,
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct TableCandidate {
     id: usize,
     segment_offset: usize,
@@ -70,7 +70,7 @@ struct TableCandidate {
     raw: Vec<u8>,
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct RemainingRun {
     segment_offset: usize,
     global_offset: usize,
@@ -80,7 +80,7 @@ struct RemainingRun {
     hint: String,
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct SecondPassReport {
     palettes: Vec<PaletteCandidate>,
     sprites: Vec<SpriteCandidate>,
@@ -376,6 +376,13 @@ fn ensure_parent(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
+fn reset_dir(path: &Path) -> std::io::Result<()> {
+    if path.exists() {
+        fs::remove_dir_all(path)?;
+    }
+    fs::create_dir_all(path)
+}
+
 fn write_asm_db(path: &Path, bytes: &[u8]) -> std::io::Result<()> {
     ensure_parent(path)?;
     let mut out = String::new();
@@ -516,7 +523,7 @@ fn detect_palettes(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRang
                     let variance_norm = (color_variance / 18.0).min(1.0);
                     let confidence = (unique_ratio * 0.55 + variance_norm * 0.45).min(1.0);
 
-                    if unique_color_count >= (palette_size / 2) && color_variance >= 3.5 && confidence >= 0.48 {
+                    if unique_color_count >= (palette_size / 3) && color_variance >= 2.0 && confidence >= 0.34 {
                         candidates.push(PaletteCandidate {
                             id: 0,
                             segment_offset: start,
@@ -559,6 +566,45 @@ fn detect_palettes(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRang
         ) {
             candidate.id = palettes.len() + 1;
             palettes.push(candidate);
+        }
+    }
+
+    if palettes.is_empty() {
+        let mut i = 0usize;
+        while i + 48 <= assets.len() && palettes.len() < 3 {
+            if !is_vga_triplet(assets, i) {
+                i += 1;
+                continue;
+            }
+
+            let mut j = i;
+            while j + 2 < assets.len() && is_vga_triplet(assets, j) {
+                j += 3;
+            }
+
+            if j >= i + 48 {
+                let fallback_len = (j - i).min(64 * 3);
+                if mark_range_if_free(i, i + fallback_len, claimed) {
+                    let mut colors = Vec::new();
+                    for k in (i..(i + fallback_len)).step_by(3) {
+                        colors.push([assets[k], assets[k + 1], assets[k + 2]]);
+                    }
+                    let (unique_color_count, color_variance) = palette_metrics(&colors);
+                    palettes.push(PaletteCandidate {
+                        id: palettes.len() + 1,
+                        segment_offset: i,
+                        global_offset: base_offset + i,
+                        length: fallback_len,
+                        unique_color_count,
+                        color_variance,
+                        confidence: 0.30,
+                        colors,
+                        raw: assets[i..(i + fallback_len)].to_vec(),
+                    });
+                }
+            }
+
+            i = j.max(i + 1);
         }
     }
 
@@ -710,9 +756,9 @@ fn table_repetition_metrics(words: &[u16]) -> (usize, f32, f32) {
 
 fn detect_tables(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRange>) -> Vec<TableCandidate> {
     let mut tables = Vec::new();
-    let mut i = 0usize;
 
-    while i + 32 <= assets.len() && tables.len() < 64 {
+    let mut i = 0usize;
+    while i + 32 <= assets.len() && tables.len() < 8 {
         if range_overlaps_any(i, i + 2, claimed) {
             i += 2;
             continue;
@@ -737,7 +783,7 @@ fn detect_tables(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRange>
 
             words.push(current);
             j += 2;
-            if words.len() >= 1024 {
+            if words.len() >= 768 {
                 break;
             }
         }
@@ -750,12 +796,7 @@ fn detect_tables(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRange>
                 }
             }
 
-            let monotonic_ratio = if words.len() <= 1 {
-                0.0
-            } else {
-                monotonic_steps as f32 / (words.len() - 1) as f32
-            };
-
+            let monotonic_ratio = monotonic_steps as f32 / (words.len().saturating_sub(1).max(1)) as f32;
             let (unique_count, repeated_ratio, pair_pattern_ratio) = table_repetition_metrics(&words);
             let entropy = shannon_entropy(&assets[start..j]);
             let confidence = ((1.0 - repeated_ratio) * 0.35
@@ -764,13 +805,13 @@ fn detect_tables(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRange>
                 + (entropy / 8.0).min(1.0) * 0.20)
                 .clamp(0.0, 1.0);
 
-            if unique_count >= 12
-                && repeated_ratio <= 0.24
-                && pair_pattern_ratio <= 0.35
-                && monotonic_ratio >= 0.30
-                && monotonic_ratio <= 0.95
-                && entropy >= 2.2
-                && confidence >= 0.50
+            if unique_count >= 8
+                && repeated_ratio <= 0.55
+                && pair_pattern_ratio <= 0.70
+                && monotonic_ratio >= 0.15
+                && monotonic_ratio <= 0.98
+                && entropy >= 1.5
+                && confidence >= 0.35
                 && mark_range_if_free(start, j, claimed)
             {
                 tables.push(TableCandidate {
@@ -792,6 +833,83 @@ fn detect_tables(assets: &[u8], base_offset: usize, claimed: &mut Vec<ByteRange>
         }
 
         i = if j > i { j } else { i + 2 };
+    }
+
+    let mut k = 0usize;
+    while k + 64 <= assets.len() && tables.len() < 12 {
+        if range_overlaps_any(k, k + 1, claimed) {
+            k += 1;
+            continue;
+        }
+
+        let start = k;
+        let mut end = k;
+        let mut values = Vec::<u8>::new();
+
+        while end < assets.len() {
+            if range_overlaps_any(end, end + 1, claimed) {
+                break;
+            }
+
+            let current = assets[end];
+            if let Some(prev) = values.last().copied() {
+                let diff = current.abs_diff(prev);
+                if diff > 8 {
+                    break;
+                }
+            }
+
+            values.push(current);
+            end += 1;
+            if values.len() >= 512 {
+                break;
+            }
+        }
+
+        if values.len() >= 64 {
+            let words = values.iter().map(|v| *v as u16).collect::<Vec<_>>();
+            let (unique_count, repeated_ratio, _) = table_repetition_metrics(&words);
+
+            let mut mono_steps = 0usize;
+            for pair in values.windows(2) {
+                if pair[1] >= pair[0] {
+                    mono_steps += 1;
+                }
+            }
+            let monotonic_ratio = mono_steps as f32 / (values.len().saturating_sub(1).max(1)) as f32;
+            let entropy = shannon_entropy(&assets[start..end]);
+            let pair_pattern_ratio = 0.0;
+            let confidence = ((1.0 - repeated_ratio) * 0.40
+                + monotonic_ratio.min(1.0) * 0.35
+                + (entropy / 8.0).min(1.0) * 0.25)
+                .clamp(0.0, 1.0);
+
+            if unique_count >= 12
+                && repeated_ratio <= 0.45
+                && monotonic_ratio >= 0.55
+                && entropy >= 1.4
+                && confidence >= 0.45
+                && mark_range_if_free(start, end, claimed)
+            {
+                tables.push(TableCandidate {
+                    id: tables.len() + 1,
+                    segment_offset: start,
+                    global_offset: base_offset + start,
+                    length: end - start,
+                    entry_count: values.len(),
+                    entry_width: 1,
+                    unique_count,
+                    repeated_ratio,
+                    pair_pattern_ratio,
+                    monotonic_ratio,
+                    confidence,
+                    words,
+                    raw: assets[start..end].to_vec(),
+                });
+            }
+        }
+
+        k = if end > k { end } else { k + 1 };
     }
 
     tables
@@ -957,7 +1075,7 @@ fn write_pgm_sprite_sheet(path: &Path, tiles: &[[u8; 8]], width_tiles: usize) ->
     fs::write(path, out)
 }
 
-fn write_table_text(path: &Path, words: &[u16], base_offset: usize) -> std::io::Result<()> {
+fn write_table_text(path: &Path, words: &[u16], base_offset: usize, entry_width: usize) -> std::io::Result<()> {
     ensure_parent(path)?;
     let mut out = String::new();
     out.push_str("index\toffset\thex\tdec\n");
@@ -965,12 +1083,87 @@ fn write_table_text(path: &Path, words: &[u16], base_offset: usize) -> std::io::
         out.push_str(&format!(
             "{}\t0x{:08X}\t0x{:04X}\t{}\n",
             idx,
-            base_offset + (idx * 2),
+            base_offset + (idx * entry_width),
             value,
             value
         ));
     }
     fs::write(path, out)
+}
+
+fn write_wasm_asset_pack(decoded_dir: &Path, report: &SecondPassReport) -> std::io::Result<()> {
+    let wasm_dir = decoded_dir.join("wasm");
+    fs::create_dir_all(&wasm_dir)?;
+
+    let mut blob: Vec<u8> = Vec::new();
+    let mut entries = Vec::new();
+
+    let mut append_entry = |kind: &str, id: usize, global_offset: usize, confidence: f32, raw: &[u8]| {
+        let offset = blob.len();
+        blob.extend_from_slice(raw);
+        entries.push(json!({
+            "type": kind,
+            "id": id,
+            "global_offset": global_offset,
+            "confidence": confidence,
+            "byte_offset": offset,
+            "byte_length": raw.len(),
+        }));
+    };
+
+    for palette in &report.palettes {
+        append_entry(
+            "palette",
+            palette.id,
+            palette.global_offset,
+            palette.confidence,
+            &palette.raw,
+        );
+    }
+
+    for sprite in &report.sprites {
+        append_entry(
+            "sprite",
+            sprite.id,
+            sprite.global_offset,
+            sprite.confidence,
+            &sprite.raw,
+        );
+    }
+
+    for table in &report.tables {
+        append_entry(
+            "table",
+            table.id,
+            table.global_offset,
+            table.confidence,
+            &table.raw,
+        );
+    }
+
+    fs::write(wasm_dir.join("assets_pack.bin"), &blob)?;
+
+    let manifest = json!({
+        "format": "sopwith.asset-pack.v1",
+        "endianness": "little",
+        "counts": {
+            "palettes": report.palettes.len(),
+            "sprites": report.sprites.len(),
+            "tables": report.tables.len(),
+        },
+        "entries": entries,
+        "load_hint": {
+            "js": "fetch('decoded/wasm/assets_pack.bin').then(r => r.arrayBuffer())",
+            "wasm": "map byte ranges from assets_pack.json to typed structs in linear memory"
+        }
+    });
+
+    fs::write(
+        wasm_dir.join("assets_pack.json"),
+        serde_json::to_string_pretty(&manifest).unwrap_or_else(|_| "{}".to_string()),
+    )?;
+
+    Ok(())
 }
 
 fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) -> std::io::Result<SecondPassReport> {
@@ -979,9 +1172,11 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
     let sprites_dir = decoded_dir.join("sprites");
     let tables_dir = decoded_dir.join("tables");
 
-    fs::create_dir_all(&palettes_dir)?;
-    fs::create_dir_all(&sprites_dir)?;
-    fs::create_dir_all(&tables_dir)?;
+    fs::create_dir_all(&decoded_dir)?;
+    reset_dir(&palettes_dir)?;
+    reset_dir(&sprites_dir)?;
+    reset_dir(&tables_dir)?;
+    reset_dir(&decoded_dir.join("wasm"))?;
 
     let mut claimed = Vec::<ByteRange>::new();
 
@@ -1001,6 +1196,9 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "global_offset": palette.global_offset,
             "length": palette.length,
             "color_count": palette.colors.len(),
+            "unique_color_count": palette.unique_color_count,
+            "color_variance": palette.color_variance,
+            "confidence": palette.confidence,
             "colors_vga6": palette.colors,
         });
         fs::write(
@@ -1024,6 +1222,9 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "global_offset": sprite.global_offset,
             "length": sprite.length,
             "tile_count": sprite.tile_count,
+            "avg_set_bits": sprite.avg_set_bits,
+            "row_transition_ratio": sprite.row_transition_ratio,
+            "confidence": sprite.confidence,
             "sheet": {
                 "width_tiles": sprite.width_tiles,
                 "height_tiles": sprite.height_tiles,
@@ -1044,6 +1245,7 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             &tables_dir.join(format!("{}_view.tsv", stem)),
             &table.words,
             table.global_offset,
+            table.entry_width,
         )?;
 
         let table_json = json!({
@@ -1053,7 +1255,11 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "length": table.length,
             "entry_count": table.entry_count,
             "entry_width": table.entry_width,
+            "unique_count": table.unique_count,
+            "repeated_ratio": table.repeated_ratio,
+            "pair_pattern_ratio": table.pair_pattern_ratio,
             "monotonic_ratio": table.monotonic_ratio,
+            "confidence": table.confidence,
             "entries_u16_le": table.words,
         });
         fs::write(
@@ -1063,6 +1269,13 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
     }
 
     let index_json = json!({
+        "detection_profile": {
+            "version": "2.1",
+            "goal": "reduce false positives",
+            "sprite_min_tiles": 12,
+            "table_min_entries": 24,
+            "palette_sizes_tested": [16, 32, 64]
+        },
         "base_segment": {
             "name": "assets_candidate.bin",
             "global_offset_start": assets_base,
@@ -1077,6 +1290,7 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "global_offset": p.global_offset,
             "length": p.length,
             "color_count": p.colors.len(),
+            "confidence": p.confidence,
             "json": format!("decoded/palettes/palette_{:03}.json", p.id),
             "raw": format!("decoded/palettes/palette_{:03}.bin", p.id),
             "swatch_ppm": format!("decoded/palettes/palette_{:03}_swatch.ppm", p.id),
@@ -1086,6 +1300,7 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "global_offset": s.global_offset,
             "length": s.length,
             "tile_count": s.tile_count,
+            "confidence": s.confidence,
             "json": format!("decoded/sprites/sprite_{:03}.json", s.id),
             "raw": format!("decoded/sprites/sprite_{:03}.bin", s.id),
             "sheet_pgm": format!("decoded/sprites/sprite_{:03}_sheet.pgm", s.id),
@@ -1095,6 +1310,7 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
             "global_offset": t.global_offset,
             "length": t.length,
             "entry_count": t.entry_count,
+            "confidence": t.confidence,
             "json": format!("decoded/tables/table_{:03}.json", t.id),
             "raw": format!("decoded/tables/table_{:03}.bin", t.id),
             "view_tsv": format!("decoded/tables/table_{:03}_view.tsv", t.id),
@@ -1147,12 +1363,16 @@ fn run_second_pass_decode(export_dir: &Path, assets: &[u8], assets_base: usize) 
     }
     fs::write(decoded_dir.join("remaining_items.txt"), remaining_txt)?;
 
-    Ok(SecondPassReport {
+    let report = SecondPassReport {
         palettes,
         sprites,
         tables,
         remaining,
-    })
+    };
+
+    write_wasm_asset_pack(&decoded_dir, &report)?;
+
+    Ok(report)
 }
 
 fn export_artifacts(
@@ -1258,7 +1478,11 @@ fn export_artifacts(
             "signatures": "signature_offsets.txt",
             "asm_db": "transpile/sopwith_image.asm",
             "decoded_index": "decoded/index.json",
-            "remaining_items": "decoded/remaining_items.json"
+            "remaining_items": "decoded/remaining_items.json",
+            "wasm_asset_pack": [
+                "decoded/wasm/assets_pack.bin",
+                "decoded/wasm/assets_pack.json"
+            ]
         }
     });
 

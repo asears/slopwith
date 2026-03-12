@@ -1,8 +1,11 @@
 {
-  "global_offset": 45640,
+  "avg_set_bits": 18.214284896850586,
+  "confidence": 0.5245535373687744,
+  "global_offset": 48544,
   "id": 10,
-  "length": 32,
-  "segment_offset": 9800,
+  "length": 112,
+  "row_transition_ratio": 0.9081632494926453,
+  "segment_offset": 12704,
   "sheet": {
     "format": "1bpp",
     "height_tiles": 1,
@@ -10,7 +13,7 @@
       8,
       8
     ],
-    "width_tiles": 4
+    "width_tiles": 14
   },
-  "tile_count": 4
+  "tile_count": 14
 }

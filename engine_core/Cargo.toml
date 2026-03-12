@@ -1,0 +1,15 @@
+[package]
+name = "engine_core"
+version = "0.1.0"
+edition = "2021"
+description = "Sopwith engine core — compiled to WebAssembly"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# No external dependencies — bare wasm32-unknown-unknown exports.
+
+[profile.release]
+opt-level = "z"    # minimise binary size
+lto = true

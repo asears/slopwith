@@ -1,0 +1,207 @@
+{
+  "counts": {
+    "palettes": 7,
+    "sprites": 12,
+    "tables": 5
+  },
+  "endianness": "little",
+  "entries": [
+    {
+      "byte_length": 48,
+      "byte_offset": 0,
+      "confidence": 0.6066666841506958,
+      "global_offset": 43219,
+      "id": 1,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 48,
+      "confidence": 0.6061111092567444,
+      "global_offset": 43031,
+      "id": 2,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 96,
+      "confidence": 0.6005555391311646,
+      "global_offset": 44581,
+      "id": 3,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 144,
+      "confidence": 0.5822916626930237,
+      "global_offset": 44729,
+      "id": 4,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 192,
+      "confidence": 0.5722916722297668,
+      "global_offset": 45167,
+      "id": 5,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 240,
+      "confidence": 0.5412499904632568,
+      "global_offset": 42881,
+      "id": 6,
+      "type": "palette"
+    },
+    {
+      "byte_length": 48,
+      "byte_offset": 288,
+      "confidence": 0.3688194751739502,
+      "global_offset": 43129,
+      "id": 7,
+      "type": "palette"
+    },
+    {
+      "byte_length": 2048,
+      "byte_offset": 336,
+      "confidence": 0.9176431894302368,
+      "global_offset": 35840,
+      "id": 1,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 1872,
+      "byte_offset": 2384,
+      "confidence": 0.9137464761734009,
+      "global_offset": 37888,
+      "id": 2,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 248,
+      "byte_offset": 4256,
+      "confidence": 0.7882561087608337,
+      "global_offset": 39808,
+      "id": 3,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 424,
+      "byte_offset": 4504,
+      "confidence": 0.7691528797149658,
+      "global_offset": 40064,
+      "id": 4,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 1280,
+      "byte_offset": 4928,
+      "confidence": 0.9041666984558105,
+      "global_offset": 40496,
+      "id": 5,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 184,
+      "byte_offset": 6208,
+      "confidence": 0.6787363886833191,
+      "global_offset": 42240,
+      "id": 6,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 136,
+      "byte_offset": 6392,
+      "confidence": 0.7913296818733215,
+      "global_offset": 42744,
+      "id": 7,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 136,
+      "byte_offset": 6528,
+      "confidence": 0.7903492450714111,
+      "global_offset": 45216,
+      "id": 8,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 104,
+      "byte_offset": 6664,
+      "confidence": 0.5633413791656494,
+      "global_offset": 48264,
+      "id": 9,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 112,
+      "byte_offset": 6768,
+      "confidence": 0.5245535373687744,
+      "global_offset": 48544,
+      "id": 10,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 136,
+      "byte_offset": 6880,
+      "confidence": 0.7521139979362488,
+      "global_offset": 48992,
+      "id": 11,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 136,
+      "byte_offset": 7016,
+      "confidence": 0.6942707896232605,
+      "global_offset": 49208,
+      "id": 12,
+      "type": "sprite"
+    },
+    {
+      "byte_length": 512,
+      "byte_offset": 7152,
+      "confidence": 0.8275141716003418,
+      "global_offset": 43267,
+      "id": 1,
+      "type": "table"
+    },
+    {
+      "byte_length": 512,
+      "byte_offset": 7664,
+      "confidence": 0.7029074430465698,
+      "global_offset": 43779,
+      "id": 2,
+      "type": "table"
+    },
+    {
+      "byte_length": 290,
+      "byte_offset": 8176,
+      "confidence": 0.7282976508140564,
+      "global_offset": 44291,
+      "id": 3,
+      "type": "table"
+    },
+    {
+      "byte_length": 100,
+      "byte_offset": 8466,
+      "confidence": 0.7279727458953857,
+      "global_offset": 44629,
+      "id": 4,
+      "type": "table"
+    },
+    {
+      "byte_length": 390,
+      "byte_offset": 8566,
+      "confidence": 0.7210142016410828,
+      "global_offset": 44777,
+      "id": 5,
+      "type": "table"
+    }
+  ],
+  "format": "sopwith.asset-pack.v1",
+  "load_hint": {
+    "js": "fetch('decoded/wasm/assets_pack.bin').then(r => r.arrayBuffer())",
+    "wasm": "map byte ranges from assets_pack.json to typed structs in linear memory"
+  }
+}

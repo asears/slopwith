@@ -14,17 +14,21 @@
       "segments/assets_candidate.strings.txt"
     ],
     "signatures": "signature_offsets.txt",
-    "strings": "strings_min6.txt"
+    "strings": "strings_min6.txt",
+    "wasm_asset_pack": [
+      "decoded/wasm/assets_pack.bin",
+      "decoded/wasm/assets_pack.json"
+    ]
   },
   "assets_candidate_size": 13696,
   "code_candidate_size": 35840,
   "code_data_split_offset": 35840,
   "mz_at_start": false,
   "second_pass": {
-    "palette_count": 11,
-    "remaining_runs": 25,
-    "sprite_count": 44,
-    "table_count": 12
+    "palette_count": 7,
+    "remaining_runs": 11,
+    "sprite_count": 12,
+    "table_count": 5
   },
   "sha256": "558894b0fffdd6829086561d204430ccf78341206d76158987efa00b100ed839",
   "size": 49536,

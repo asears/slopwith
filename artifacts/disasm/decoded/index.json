@@ -4,112 +4,95 @@
     "length": 13696,
     "name": "assets_candidate.bin"
   },
-  "palette_count": 11,
+  "detection_profile": {
+    "goal": "reduce false positives",
+    "palette_sizes_tested": [
+      16,
+      32,
+      64
+    ],
+    "sprite_min_tiles": 12,
+    "table_min_entries": 24,
+    "version": "2.1"
+  },
+  "palette_count": 7,
   "palettes": [
     {
-      "color_count": 116,
-      "global_offset": 41892,
+      "color_count": 16,
+      "confidence": 0.6066666841506958,
+      "global_offset": 43219,
       "id": 1,
       "json": "decoded/palettes/palette_001.json",
-      "length": 348,
+      "length": 48,
       "raw": "decoded/palettes/palette_001.bin",
       "swatch_ppm": "decoded/palettes/palette_001_swatch.ppm"
     },
     {
-      "color_count": 66,
-      "global_offset": 42881,
+      "color_count": 16,
+      "confidence": 0.6061111092567444,
+      "global_offset": 43031,
       "id": 2,
       "json": "decoded/palettes/palette_002.json",
-      "length": 198,
+      "length": 48,
       "raw": "decoded/palettes/palette_002.bin",
       "swatch_ppm": "decoded/palettes/palette_002_swatch.ppm"
     },
     {
-      "color_count": 46,
-      "global_offset": 43129,
+      "color_count": 16,
+      "confidence": 0.6005555391311646,
+      "global_offset": 44581,
       "id": 3,
       "json": "decoded/palettes/palette_003.json",
-      "length": 138,
+      "length": 48,
       "raw": "decoded/palettes/palette_003.bin",
       "swatch_ppm": "decoded/palettes/palette_003_swatch.ppm"
     },
     {
-      "color_count": 49,
-      "global_offset": 43335,
+      "color_count": 16,
+      "confidence": 0.5822916626930237,
+      "global_offset": 44729,
       "id": 4,
       "json": "decoded/palettes/palette_004.json",
-      "length": 147,
+      "length": 48,
       "raw": "decoded/palettes/palette_004.bin",
       "swatch_ppm": "decoded/palettes/palette_004_swatch.ppm"
     },
     {
-      "color_count": 75,
-      "global_offset": 43546,
+      "color_count": 16,
+      "confidence": 0.5722916722297668,
+      "global_offset": 45167,
       "id": 5,
       "json": "decoded/palettes/palette_005.json",
-      "length": 225,
+      "length": 48,
       "raw": "decoded/palettes/palette_005.bin",
       "swatch_ppm": "decoded/palettes/palette_005_swatch.ppm"
     },
     {
-      "color_count": 42,
-      "global_offset": 43954,
+      "color_count": 16,
+      "confidence": 0.5412499904632568,
+      "global_offset": 42881,
       "id": 6,
       "json": "decoded/palettes/palette_006.json",
-      "length": 126,
+      "length": 48,
       "raw": "decoded/palettes/palette_006.bin",
       "swatch_ppm": "decoded/palettes/palette_006_swatch.ppm"
     },
     {
-      "color_count": 105,
-      "global_offset": 44371,
+      "color_count": 16,
+      "confidence": 0.3688194751739502,
+      "global_offset": 43129,
       "id": 7,
       "json": "decoded/palettes/palette_007.json",
-      "length": 315,
+      "length": 48,
       "raw": "decoded/palettes/palette_007.bin",
       "swatch_ppm": "decoded/palettes/palette_007_swatch.ppm"
-    },
-    {
-      "color_count": 162,
-      "global_offset": 44729,
-      "id": 8,
-      "json": "decoded/palettes/palette_008.json",
-      "length": 486,
-      "raw": "decoded/palettes/palette_008.bin",
-      "swatch_ppm": "decoded/palettes/palette_008_swatch.ppm"
-    },
-    {
-      "color_count": 18,
-      "global_offset": 47774,
-      "id": 9,
-      "json": "decoded/palettes/palette_009.json",
-      "length": 54,
-      "raw": "decoded/palettes/palette_009.bin",
-      "swatch_ppm": "decoded/palettes/palette_009_swatch.ppm"
-    },
-    {
-      "color_count": 17,
-      "global_offset": 47842,
-      "id": 10,
-      "json": "decoded/palettes/palette_010.json",
-      "length": 51,
-      "raw": "decoded/palettes/palette_010.bin",
-      "swatch_ppm": "decoded/palettes/palette_010_swatch.ppm"
-    },
-    {
-      "color_count": 39,
-      "global_offset": 49418,
-      "id": 11,
-      "json": "decoded/palettes/palette_011.json",
-      "length": 117,
-      "raw": "decoded/palettes/palette_011.bin",
-      "swatch_ppm": "decoded/palettes/palette_011_swatch.ppm"
     }
   ],
-  "remaining_run_count": 25,
-  "sprite_count": 44,
+  "remaining_run_count": 11,
+  "sprite_count": 12,
   "sprites": [
     {
+      "confidence": 0.9176431894302368,
       "global_offset": 35840,
       "id": 1,
       "json": "decoded/sprites/sprite_001.json",
@@ -119,15 +102,17 @@
       "tile_count": 256
     },
     {
+      "confidence": 0.9137464761734009,
       "global_offset": 37888,
       "id": 2,
       "json": "decoded/sprites/sprite_002.json",
-      "length": 1880,
+      "length": 1872,
       "raw": "decoded/sprites/sprite_002.bin",
       "sheet_pgm": "decoded/sprites/sprite_002_sheet.pgm",
-      "tile_count": 235
+      "tile_count": 234
     },
     {
+      "confidence": 0.7882561087608337,
       "global_offset": 39808,
       "id": 3,
       "json": "decoded/sprites/sprite_003.json",
@@ -137,6 +122,7 @@
       "tile_count": 31
     },
     {
+      "confidence": 0.7691528797149658,
       "global_offset": 40064,
       "id": 4,
       "json": "decoded/sprites/sprite_004.json",
@@ -146,475 +132,137 @@
       "tile_count": 53
     },
     {
+      "confidence": 0.9041666984558105,
       "global_offset": 40496,
       "id": 5,
       "json": "decoded/sprites/sprite_005.json",
-      "length": 1336,
+      "length": 1280,
       "raw": "decoded/sprites/sprite_005.bin",
       "sheet_pgm": "decoded/sprites/sprite_005_sheet.pgm",
-      "tile_count": 167
+      "tile_count": 160
     },
     {
+      "confidence": 0.6787363886833191,
       "global_offset": 42240,
       "id": 6,
       "json": "decoded/sprites/sprite_006.json",
-      "length": 200,
+      "length": 184,
       "raw": "decoded/sprites/sprite_006.bin",
       "sheet_pgm": "decoded/sprites/sprite_006_sheet.pgm",
-      "tile_count": 25
-    },
-    {
-      "global_offset": 42448,
-      "id": 7,
-      "json": "decoded/sprites/sprite_007.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_007.bin",
-      "sheet_pgm": "decoded/sprites/sprite_007_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 42496,
-      "id": 8,
-      "json": "decoded/sprites/sprite_008.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_008.bin",
-      "sheet_pgm": "decoded/sprites/sprite_008_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 45576,
-      "id": 9,
-      "json": "decoded/sprites/sprite_009.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_009.bin",
-      "sheet_pgm": "decoded/sprites/sprite_009_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 45640,
-      "id": 10,
-      "json": "decoded/sprites/sprite_010.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_010.bin",
-      "sheet_pgm": "decoded/sprites/sprite_010_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 45704,
-      "id": 11,
-      "json": "decoded/sprites/sprite_011.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_011.bin",
-      "sheet_pgm": "decoded/sprites/sprite_011_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 45760,
-      "id": 12,
-      "json": "decoded/sprites/sprite_012.json",
-      "length": 56,
-      "raw": "decoded/sprites/sprite_012.bin",
-      "sheet_pgm": "decoded/sprites/sprite_012_sheet.pgm",
-      "tile_count": 7
-    },
-    {
-      "global_offset": 45824,
-      "id": 13,
-      "json": "decoded/sprites/sprite_013.json",
-      "length": 120,
-      "raw": "decoded/sprites/sprite_013.bin",
-      "sheet_pgm": "decoded/sprites/sprite_013_sheet.pgm",
-      "tile_count": 15
-    },
-    {
-      "global_offset": 45952,
-      "id": 14,
-      "json": "decoded/sprites/sprite_014.json",
-      "length": 56,
-      "raw": "decoded/sprites/sprite_014.bin",
-      "sheet_pgm": "decoded/sprites/sprite_014_sheet.pgm",
-      "tile_count": 7
-    },
-    {
-      "global_offset": 46160,
-      "id": 15,
-      "json": "decoded/sprites/sprite_015.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_015.bin",
-      "sheet_pgm": "decoded/sprites/sprite_015_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 46216,
-      "id": 16,
-      "json": "decoded/sprites/sprite_016.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_016.bin",
-      "sheet_pgm": "decoded/sprites/sprite_016_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 46272,
-      "id": 17,
-      "json": "decoded/sprites/sprite_017.json",
-      "length": 56,
-      "raw": "decoded/sprites/sprite_017.bin",
-      "sheet_pgm": "decoded/sprites/sprite_017_sheet.pgm",
-      "tile_count": 7
-    },
-    {
-      "global_offset": 46336,
-      "id": 18,
-      "json": "decoded/sprites/sprite_018.json",
-      "length": 120,
-      "raw": "decoded/sprites/sprite_018.bin",
-      "sheet_pgm": "decoded/sprites/sprite_018_sheet.pgm",
-      "tile_count": 15
-    },
-    {
-      "global_offset": 46464,
-      "id": 19,
-      "json": "decoded/sprites/sprite_019.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_019.bin",
-      "sheet_pgm": "decoded/sprites/sprite_019_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 46528,
-      "id": 20,
-      "json": "decoded/sprites/sprite_020.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_020.bin",
-      "sheet_pgm": "decoded/sprites/sprite_020_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 46664,
-      "id": 21,
-      "json": "decoded/sprites/sprite_021.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_021.bin",
-      "sheet_pgm": "decoded/sprites/sprite_021_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 46728,
-      "id": 22,
-      "json": "decoded/sprites/sprite_022.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_022.bin",
-      "sheet_pgm": "decoded/sprites/sprite_022_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 46784,
-      "id": 23,
-      "json": "decoded/sprites/sprite_023.json",
-      "length": 184,
-      "raw": "decoded/sprites/sprite_023.bin",
-      "sheet_pgm": "decoded/sprites/sprite_023_sheet.pgm",
       "tile_count": 23
     },
     {
-      "global_offset": 46984,
-      "id": 24,
-      "json": "decoded/sprites/sprite_024.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_024.bin",
-      "sheet_pgm": "decoded/sprites/sprite_024_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 47048,
-      "id": 25,
-      "json": "decoded/sprites/sprite_025.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_025.bin",
-      "sheet_pgm": "decoded/sprites/sprite_025_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 47232,
-      "id": 26,
-      "json": "decoded/sprites/sprite_026.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_026.bin",
-      "sheet_pgm": "decoded/sprites/sprite_026_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 47296,
-      "id": 27,
-      "json": "decoded/sprites/sprite_027.json",
-      "length": 120,
-      "raw": "decoded/sprites/sprite_027.bin",
-      "sheet_pgm": "decoded/sprites/sprite_027_sheet.pgm",
-      "tile_count": 15
-    },
-    {
-      "global_offset": 47424,
-      "id": 28,
-      "json": "decoded/sprites/sprite_028.json",
-      "length": 56,
-      "raw": "decoded/sprites/sprite_028.bin",
-      "sheet_pgm": "decoded/sprites/sprite_028_sheet.pgm",
-      "tile_count": 7
-    },
-    {
-      "global_offset": 47496,
-      "id": 29,
-      "json": "decoded/sprites/sprite_029.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_029.bin",
-      "sheet_pgm": "decoded/sprites/sprite_029_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 47568,
-      "id": 30,
-      "json": "decoded/sprites/sprite_030.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_030.bin",
-      "sheet_pgm": "decoded/sprites/sprite_030_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 47632,
-      "id": 31,
-      "json": "decoded/sprites/sprite_031.json",
-      "length": 104,
-      "raw": "decoded/sprites/sprite_031.bin",
-      "sheet_pgm": "decoded/sprites/sprite_031_sheet.pgm",
-      "tile_count": 13
-    },
-    {
-      "global_offset": 47944,
-      "id": 32,
-      "json": "decoded/sprites/sprite_032.json",
-      "length": 32,
-      "raw": "decoded/sprites/sprite_032.bin",
-      "sheet_pgm": "decoded/sprites/sprite_032_sheet.pgm",
-      "tile_count": 4
-    },
-    {
-      "global_offset": 48024,
-      "id": 33,
-      "json": "decoded/sprites/sprite_033.json",
-      "length": 56,
-      "raw": "decoded/sprites/sprite_033.bin",
-      "sheet_pgm": "decoded/sprites/sprite_033_sheet.pgm",
-      "tile_count": 7
-    },
-    {
-      "global_offset": 48112,
-      "id": 34,
-      "json": "decoded/sprites/sprite_034.json",
-      "length": 120,
-      "raw": "decoded/sprites/sprite_034.bin",
-      "sheet_pgm": "decoded/sprites/sprite_034_sheet.pgm",
-      "tile_count": 15
-    },
-    {
-      "global_offset": 48272,
-      "id": 35,
-      "json": "decoded/sprites/sprite_035.json",
-      "length": 96,
-      "raw": "decoded/sprites/sprite_035.bin",
-      "sheet_pgm": "decoded/sprites/sprite_035_sheet.pgm",
-      "tile_count": 12
-    },
-    {
-      "global_offset": 48384,
-      "id": 36,
-      "json": "decoded/sprites/sprite_036.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_036.bin",
-      "sheet_pgm": "decoded/sprites/sprite_036_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 48456,
-      "id": 37,
-      "json": "decoded/sprites/sprite_037.json",
-      "length": 40,
-      "raw": "decoded/sprites/sprite_037.bin",
-      "sheet_pgm": "decoded/sprites/sprite_037_sheet.pgm",
-      "tile_count": 5
-    },
-    {
-      "global_offset": 48544,
-      "id": 38,
-      "json": "decoded/sprites/sprite_038.json",
-      "length": 112,
-      "raw": "decoded/sprites/sprite_038.bin",
-      "sheet_pgm": "decoded/sprites/sprite_038_sheet.pgm",
-      "tile_count": 14
-    },
-    {
-      "global_offset": 48680,
-      "id": 39,
-      "json": "decoded/sprites/sprite_039.json",
-      "length": 88,
-      "raw": "decoded/sprites/sprite_039.bin",
-      "sheet_pgm": "decoded/sprites/sprite_039_sheet.pgm",
-      "tile_count": 11
-    },
-    {
-      "global_offset": 48776,
-      "id": 40,
-      "json": "decoded/sprites/sprite_040.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_040.bin",
-      "sheet_pgm": "decoded/sprites/sprite_040_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 48840,
-      "id": 41,
-      "json": "decoded/sprites/sprite_041.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_041.bin",
-      "sheet_pgm": "decoded/sprites/sprite_041_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 48928,
-      "id": 42,
-      "json": "decoded/sprites/sprite_042.json",
-      "length": 48,
-      "raw": "decoded/sprites/sprite_042.bin",
-      "sheet_pgm": "decoded/sprites/sprite_042_sheet.pgm",
-      "tile_count": 6
-    },
-    {
-      "global_offset": 48992,
-      "id": 43,
-      "json": "decoded/sprites/sprite_043.json",
+      "confidence": 0.7913296818733215,
+      "global_offset": 42744,
+      "id": 7,
+      "json": "decoded/sprites/sprite_007.json",
       "length": 136,
-      "raw": "decoded/sprites/sprite_043.bin",
-      "sheet_pgm": "decoded/sprites/sprite_043_sheet.pgm",
+      "raw": "decoded/sprites/sprite_007.bin",
+      "sheet_pgm": "decoded/sprites/sprite_007_sheet.pgm",
       "tile_count": 17
     },
     {
-      "global_offset": 49216,
-      "id": 44,
-      "json": "decoded/sprites/sprite_044.json",
-      "length": 128,
-      "raw": "decoded/sprites/sprite_044.bin",
-      "sheet_pgm": "decoded/sprites/sprite_044_sheet.pgm",
-      "tile_count": 16
+      "confidence": 0.7903492450714111,
+      "global_offset": 45216,
+      "id": 8,
+      "json": "decoded/sprites/sprite_008.json",
+      "length": 136,
+      "raw": "decoded/sprites/sprite_008.bin",
+      "sheet_pgm": "decoded/sprites/sprite_008_sheet.pgm",
+      "tile_count": 17
+    },
+    {
+      "confidence": 0.5633413791656494,
+      "global_offset": 48264,
+      "id": 9,
+      "json": "decoded/sprites/sprite_009.json",
+      "length": 104,
+      "raw": "decoded/sprites/sprite_009.bin",
+      "sheet_pgm": "decoded/sprites/sprite_009_sheet.pgm",
+      "tile_count": 13
+    },
+    {
+      "confidence": 0.5245535373687744,
+      "global_offset": 48544,
+      "id": 10,
+      "json": "decoded/sprites/sprite_010.json",
+      "length": 112,
+      "raw": "decoded/sprites/sprite_010.bin",
+      "sheet_pgm": "decoded/sprites/sprite_010_sheet.pgm",
+      "tile_count": 14
+    },
+    {
+      "confidence": 0.7521139979362488,
+      "global_offset": 48992,
+      "id": 11,
+      "json": "decoded/sprites/sprite_011.json",
+      "length": 136,
+      "raw": "decoded/sprites/sprite_011.bin",
+      "sheet_pgm": "decoded/sprites/sprite_011_sheet.pgm",
+      "tile_count": 17
+    },
+    {
+      "confidence": 0.6942707896232605,
+      "global_offset": 49208,
+      "id": 12,
+      "json": "decoded/sprites/sprite_012.json",
+      "length": 136,
+      "raw": "decoded/sprites/sprite_012.bin",
+      "sheet_pgm": "decoded/sprites/sprite_012_sheet.pgm",
+      "tile_count": 17
     }
   ],
-  "table_count": 12,
+  "table_count": 5,
   "tables": [
     {
-      "entry_count": 159,
-      "global_offset": 42562,
+      "confidence": 0.8275141716003418,
+      "entry_count": 512,
+      "global_offset": 43267,
       "id": 1,
       "json": "decoded/tables/table_001.json",
-      "length": 318,
+      "length": 512,
       "raw": "decoded/tables/table_001.bin",
       "view_tsv": "decoded/tables/table_001_view.tsv"
     },
     {
-      "entry_count": 24,
-      "global_offset": 43080,
+      "confidence": 0.7029074430465698,
+      "entry_count": 512,
+      "global_offset": 43779,
       "id": 2,
       "json": "decoded/tables/table_002.json",
-      "length": 48,
+      "length": 512,
       "raw": "decoded/tables/table_002.bin",
       "view_tsv": "decoded/tables/table_002_view.tsv"
     },
     {
-      "entry_count": 33,
-      "global_offset": 43268,
+      "confidence": 0.7282976508140564,
+      "entry_count": 290,
+      "global_offset": 44291,
       "id": 3,
       "json": "decoded/tables/table_003.json",
-      "length": 66,
+      "length": 290,
       "raw": "decoded/tables/table_003.bin",
       "view_tsv": "decoded/tables/table_003_view.tsv"
     },
     {
-      "entry_count": 32,
-      "global_offset": 43482,
+      "confidence": 0.7279727458953857,
+      "entry_count": 100,
+      "global_offset": 44629,
       "id": 4,
       "json": "decoded/tables/table_004.json",
-      "length": 64,
+      "length": 100,
       "raw": "decoded/tables/table_004.bin",
       "view_tsv": "decoded/tables/table_004_view.tsv"
     },
     {
-      "entry_count": 145,
-      "global_offset": 44080,
+      "confidence": 0.7210142016410828,
+      "entry_count": 390,
+      "global_offset": 44777,
       "id": 5,
       "json": "decoded/tables/table_005.json",
-      "length": 290,
+      "length": 390,
       "raw": "decoded/tables/table_005.bin",
       "view_tsv": "decoded/tables/table_005_view.tsv"
-    },
-    {
-      "entry_count": 21,
-      "global_offset": 44686,
-      "id": 6,
-      "json": "decoded/tables/table_006.json",
-      "length": 42,
-      "raw": "decoded/tables/table_006.bin",
-      "view_tsv": "decoded/tables/table_006_view.tsv"
-    },
-    {
-      "entry_count": 173,
-      "global_offset": 45216,
-      "id": 7,
-      "json": "decoded/tables/table_007.json",
-      "length": 346,
-      "raw": "decoded/tables/table_007.bin",
-      "view_tsv": "decoded/tables/table_007_view.tsv"
-    },
-    {
-      "entry_count": 22,
-      "global_offset": 46054,
-      "id": 8,
-      "json": "decoded/tables/table_008.json",
-      "length": 44,
-      "raw": "decoded/tables/table_008.bin",
-      "view_tsv": "decoded/tables/table_008_view.tsv"
-    },
-    {
-      "entry_count": 22,
-      "global_offset": 46116,
-      "id": 9,
-      "json": "decoded/tables/table_009.json",
-      "length": 44,
-      "raw": "decoded/tables/table_009.bin",
-      "view_tsv": "decoded/tables/table_009_view.tsv"
-    },
-    {
-      "entry_count": 23,
-      "global_offset": 47138,
-      "id": 10,
-      "json": "decoded/tables/table_010.json",
-      "length": 46,
-      "raw": "decoded/tables/table_010.bin",
-      "view_tsv": "decoded/tables/table_010_view.tsv"
-    },
-    {
-      "entry_count": 18,
-      "global_offset": 48232,
-      "id": 11,
-      "json": "decoded/tables/table_011.json",
-      "length": 36,
-      "raw": "decoded/tables/table_011.bin",
-      "view_tsv": "decoded/tables/table_011_view.tsv"
-    },
-    {
-      "entry_count": 19,
-      "global_offset": 49174,
-      "id": 12,
-      "json": "decoded/tables/table_012.json",
-      "length": 38,
-      "raw": "decoded/tables/table_012.bin",
-      "view_tsv": "decoded/tables/table_012_view.tsv"
     }
   ]
 }
