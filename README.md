@@ -4,6 +4,8 @@
 
 [play now!](/platform_web/www/index.html)
 
+[source code](https://github.com/asears/slopwith/)
+
 Sopwith was created as a demo for the BMB Compuscience Imaginet network, developed by David L. Clark.
 
 <https://en.wikipedia.org/wiki/Sopwith_(video_game)>
