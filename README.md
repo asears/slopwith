@@ -2,7 +2,7 @@
 
 "You can turn a cow into a hamburger. You cannot turn a hamburger back into the cow."
 
-(play now!)</platform_web/www/index.html>
+[play now!](/platform_web/www/index.html)
 
 Sopwith was created as a demo for the BMB Compuscience Imaginet network, developed by David L. Clark.
 
